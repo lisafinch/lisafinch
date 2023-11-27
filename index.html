@@ -3,6 +3,7 @@ layout: main
 ---
 {% for post in paginator.posts %}
 <article class="post">
+  {% if post.hidden != true %}
   {% if post.img %}
     <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
   {% else %}
@@ -17,11 +18,3 @@ layout: main
 {% endfor %}
 
 {% include pagination.html %}
-
-{% for post in site.posts %}
-  {% if post.hidden != true %}
-    <!-- Render the post -->
-    <h2>{{post.title}}</h2>
-    <p>{{post.excerpt}}</p>
-  {% endif %}
-{% endfor %}
